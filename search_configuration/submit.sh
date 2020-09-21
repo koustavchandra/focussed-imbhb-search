@@ -43,5 +43,5 @@ pycbc_create_offline_search_workflow \
   ${GITLAB_URL_FULL_HL}/gating.ini \
   ${GITLAB_URL_BBH}/gps_times_chunk${CHUNKNUMBER}.ini \
   --config-overrides 'results_page:analysis-subtitle:"O3 Targeted IMBHB Analysis BBH chunk-'${CHUNKNUMBER}', '${DATA_TYPE}' data with q = 10 Mt = 600"' \
-       results_page:output-path:"/home/${USER}/public_html/o3/runs/focused-imbhb/${DATA_TYPE}/HLV/a${CHUNKNUMBER}_q10tcut70" \
+       results_page:output-path:"/home/${USER}/public_html/o3/runs/focused-imbhb/${DATA_TYPE}/HLV/a${CHUNKNUMBER}" \
        workflow:file-retention-level:all_triggers
