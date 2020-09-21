@@ -15,7 +15,7 @@ source /cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/x86_64_rhel_7/virtualenv/p
 WORKFLOW_NAME=psd-estimation-O3-HLV-Nov24
 GPSSTART=1258642818 # 24th Nov 2019 15:00: 00 UTC
 GPSEND=1258671618 # 24th Nov 2019 23:00:00 UTC
-CONFIG_URL='https://git.ligo.org/koustav.chandra/pycbc-config/-/raw/focusedimbhb/O3C00/focusedIMBHBpipeline/psds/config/'
+CONFIG_URL='https://git.ligo.org/koustav.chandra/focussed-imbhb-search/-/raw/master/psd/config/'
 
 ecp-cookie-init LIGO.ORG https://git.ligo.org/users/auth/shibboleth/callback $LIGO_USERNAME
 
