@@ -12,18 +12,16 @@ if test x${LIGO_USERNAME} == "x" ; then
 fi
 
 WORKFLOW_NAME=o3
-CONFIG_TAG='v1.16.6.1'
+CONFIG_TAG='v1.16.9.4'
 DATA_TYPE='C01'
 DATA_INI_NAME=data_O3_C01_clean.ini
 
 GITLAB_URL_FULL_HL="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3C00/pipelineHL"
 GITLAB_URL_FULL_HLV="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3C00/pipelineHLV"
-GITLAB_URL_IMBHB_HL="https://git.ligo.org/koustav.chandra/pycbc-config/-/raw/focusedimbhb/O3C00/focusedIMBHBpipeline/search_config/HL/"
-GITLAB_URL_IMBHB_HLV="https://git.ligo.org/koustav.chandra/pycbc-config/-/raw/focusedimbhb/O3C00/focusedIMBHBpipeline/search_config/HLV/"
+GITLAB_URL_IMBHB_HLV="https://git.ligo.org/koustav.chandra/focussed-imbhb-search/-/raw/master/search_configuration/"
 GITLAB_URL_DATA_HL="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3${DATA_TYPE}/pipelineHL"
 GITLAB_URL_DATA_HLV="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3${DATA_TYPE}/pipelineHLV"
-GITLAB_URL_BBH="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3C00/targetedBBHpipelineHL"
-
+GITLAB_URL_BBH="https://git.ligo.org/ligo-cbc/pycbc-config/-/raw/master/O3C01/targetedBBHpipelineHLV/"
 
 set -e 
 
@@ -39,7 +37,7 @@ pycbc_create_offline_search_workflow \
   --config-files \
   ${GITLAB_URL_IMBHB_HLV}/analysis.ini \
   ${GITLAB_URL_FULL_HLV}/executables.ini \
-  ${GITLAB_URL_IMBHB_HL}/injections.ini \
+  ${GITLAB_URL_IMBHB_HLV}/injections.ini \
   ${GITLAB_URL_IMBHB_HLV}/plotting.ini \
   ${GITLAB_URL_DATA_HLV}/${DATA_INI_NAME} \
   ${GITLAB_URL_FULL_HL}/gating.ini \
