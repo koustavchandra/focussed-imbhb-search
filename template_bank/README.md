@@ -26,3 +26,8 @@ Wait for completion, then get the bank inside the `output` directory
 <img src="Bank.png"  width="720">
 
 See the general [PyCBC documentation](https://pycbc.org/pycbc/latest/html/tmpltbank.html) to understand the content of `tmpltbank.ini`.
+
+The files committed here can be found in the following location in the **CIT** cluster:
+```
+/home/koustav.chandra/o3_dev_ops/psds
+```
