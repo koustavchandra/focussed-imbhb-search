@@ -3,7 +3,7 @@
 Average single-detector and multi-detector noise PSDs from the November 24 O3 data
 using C01 calibration. The averaging uses the harmonic mean.
 
-To generate the workflow, copy the `submit.sh` file in your local directory and run `bash submit.sh user.name`. Depending upon your choice please change the `GPSSTART` and `GPSEND`. You may also alter the `data_O3_C01.ini` to `data_O3_C00.ini` if you wish to use C00 data for PSD estimation.
+To generate the workflow, copy the `submit.sh` file in your local directory and run `bash submit.sh user.name`. Depending upon your choice please change the `GPSSTART` and `GPSEND`. The estimation is made on C01 data `data_O3_C01.ini`.
 
 When the above command completes successfully, submit the workflow:
 ```
