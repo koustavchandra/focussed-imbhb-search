@@ -20,3 +20,8 @@ to understand the content of `psd_estimation.ini`.
 <img src="O3_24Nov_PSD.png"  width="520">
 
 See the DetChar [Summary Page](https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20191124/) for details.
+
+The files committed here can be found in the following location in the **CIT** cluster:
+```
+/home/koustav.chandra/o3_dev_ops/psds
+```
