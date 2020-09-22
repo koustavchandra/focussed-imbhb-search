@@ -27,7 +27,7 @@ Wait for completion, then get the bank inside the `output` directory
 
 See the general [PyCBC documentation](https://pycbc.org/pycbc/latest/html/tmpltbank.html) to understand the content of `tmpltbank.ini`.
 
-The files committed here can be found in the following location in the **CIT** cluster:
+The files committed here can be found in the following location in the **LHO** cluster:
 ```
-/home/koustav.chandra/o3_dev_ops/psds
+/home/koustav.chandra/o3_devops/focusedimbhb_non_HM/bank_upto_500/restricted_q_space/q10t_cut
 ```
