@@ -19,6 +19,9 @@ The bank being used for the runs is the IMBHB bank with <img src="https://latex.
 To create the workflow for C01_sub60Hz data run `bash submit.sh 1 user.name` where 1 is the BBH Chunk number. Change the chunk number as per choice of time. When the above command completes successfully, submit the workflow by:
 ```
 cd output
+source /cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/x86_64_rhel_7/virtualenv/pycbc-v1.16.9/bin/activate
+export LAL_DATA_PATH=/home/koustav.chandra/soft/hdf5_data
+export HDF5_USE_FILE_LOCKING=FALSE
 pycbc_submit_dax --accounting-group ligo.prod.o3.cbc.bbh.pycbcoffline --dax o3.dax --no-grid
 ```
 
