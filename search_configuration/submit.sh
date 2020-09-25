@@ -15,11 +15,11 @@ WORKFLOW_NAME=o3
 CONFIG_TAG='v1.16.9.4'
 DATA_TYPE='C01'
 DATA_INI_NAME=data_O3_C01_clean.ini
+DESCRIPTION='INITIAL'
 
 GITLAB_URL_FULL_HL="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3C00/pipelineHL"
 GITLAB_URL_FULL_HLV="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3C00/pipelineHLV"
 GITLAB_URL_IMBHB_HLV="https://git.ligo.org/koustav.chandra/focussed-imbhb-search/-/raw/master/search_configuration/"
-GITLAB_URL_DATA_HL="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3${DATA_TYPE}/pipelineHL"
 GITLAB_URL_DATA_HLV="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3${DATA_TYPE}/pipelineHLV"
 GITLAB_URL_BBH="https://git.ligo.org/ligo-cbc/pycbc-config/-/raw/master/O3C01/targetedBBHpipelineHLV/"
 
@@ -33,7 +33,7 @@ ligo-proxy-init -p $LIGO_USERNAME
 ecp-cookie-init LIGO.ORG https://git.ligo.org/users/auth/shibboleth/callback $LIGO_USERNAME
 
 pycbc_create_offline_search_workflow \
-  --workflow-name ${WORKFLOW_NAME} --output-dir output \
+  --workflow-name ${WORKFLOW_NAME} --output-dir a${CHUNKNUMBER}_${DESCRIPTION} \
   --config-files \
   ${GITLAB_URL_IMBHB_HLV}/analysis.ini \
   ${GITLAB_URL_FULL_HLV}/executables.ini \
@@ -43,5 +43,8 @@ pycbc_create_offline_search_workflow \
   ${GITLAB_URL_FULL_HL}/gating.ini \
   ${GITLAB_URL_BBH}/gps_times_chunk${CHUNKNUMBER}.ini \
   --config-overrides 'results_page:analysis-subtitle:"O3 Targeted IMBHB Analysis BBH chunk-'${CHUNKNUMBER}', '${DATA_TYPE}' data with q = 10 Mt = 600"' \
-       results_page:output-path:"/home/${USER}/public_html/o3/runs/focused-imbhb/${DATA_TYPE}/HLV/a${CHUNKNUMBER}" \
+       results_page:output-path:"/home/${USER}/public_html/o3/runs/focused-imbhb/${DATA_TYPE}/HLV/a${CHUNKNUMBER}_${DESCRIPTION}" \
        workflow:file-retention-level:all_triggers
+
+cd a${CHUNKNUMBER}_${DESCRIPTION}
+pycbc_submit_dax --accounting-group ligo.prod.o3.cbc.bbh.pycbcoffline --dax ${WORKFLOW_NAME}.dax --no-grid
