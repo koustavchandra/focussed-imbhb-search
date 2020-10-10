@@ -27,6 +27,10 @@ GITLAB_URL_BBH="https://git.ligo.org/ligo-cbc/pycbc-config/-/raw/master/O3C01/ta
 set -e 
 
 source /cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/x86_64_rhel_7/virtualenv/pycbc-v1.16.11/bin/activate
+source /soft/intel/compilers_and_libraries_2018.0.128/linux/bin/compilervars.sh -arch intel64 -platform linux
+export LIGO_DATAFIND_SERVER="ldr.gw.iucaa.in:80"
+export PATH=/soft/intel/bin/:$PATH
+export PATH=/soft/condor_mpi/bin:$PATH
 export LAL_DATA_PATH=/home/koustav.chandra/soft/hdf5_data
 export HDF5_USE_FILE_LOCKING=FALSE
 
