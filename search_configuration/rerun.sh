@@ -48,4 +48,4 @@ pycbc_create_offline_search_workflow \
        workflow:file-retention-level:all_triggers
 
 cd a${CHUNKNUMBER}_${DESCRIPTION}
-pycbc_submit_dax --accounting-group ligo.prod.o3.cbc.bbh.pycbcoffline --dax ${WORKFLOW_NAME}.dax --no-grid --cache-file /home/koustav.chandra/o3_devops/focusedimbhb_non_HM/imbh-injs/input.map 
+pycbc_submit_dax --accounting-group ligo.prod.o3.cbc.bbh.pycbcoffline --dax ${WORKFLOW_NAME}.dax --no-grid --cache-file ../input.map 
