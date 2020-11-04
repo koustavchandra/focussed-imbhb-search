@@ -12,8 +12,8 @@ if test x${LIGO_USERNAME} == "x" ; then
 fi
 
 WORKFLOW_NAME=o3
-IMBH_CONFIG_TAG='v1.0.0'
-CONFIG_TAG='v1.16.9.4'
+IMBH_CONFIG_TAG='v1.0.2'
+CONFIG_TAG='v1.16.12.0'
 DATA_TYPE='C01'
 DATA_INI_NAME=data_O3_C01_clean.ini
 DESCRIPTION='INITIAL'
@@ -26,7 +26,7 @@ GITLAB_URL_BBH="https://git.ligo.org/ligo-cbc/pycbc-config/-/raw/master/O3C01/ta
 
 set -e 
 
-source /cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/x86_64_rhel_7/virtualenv/pycbc-v1.16.11/bin/activate
+source /cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/x86_64_rhel_7/virtualenv/pycbc-v1.16.12/bin/activate
 source /soft/intel/compilers_and_libraries_2018.0.128/linux/bin/compilervars.sh -arch intel64 -platform linux
 export LIGO_DATAFIND_SERVER="ldr.gw.iucaa.in:80"
 export PATH=/soft/intel/bin/:$PATH
@@ -42,7 +42,7 @@ pycbc_create_offline_search_workflow \
   --config-files \
   ${GITLAB_URL_IMBHB_HLV}/analysis.ini \
   ${GITLAB_URL_FULL_HLV}/executables.ini \
-    ${GITLAB_URL_IMBHB_HLV}/imbhinj.ini \ 
+  ${GITLAB_URL_IMBHB_HLV}/imbhinj.ini \
   ${GITLAB_URL_IMBHB_HLV}/plotting.ini \
   ${GITLAB_URL_DATA_HLV}/${DATA_INI_NAME} \
   ${GITLAB_URL_FULL_HL}/gating.ini \
@@ -53,3 +53,4 @@ pycbc_create_offline_search_workflow \
 
 cd a${CHUNKNUMBER}_${DESCRIPTION}
 pycbc_submit_dax --accounting-group ligo.prod.o3.cbc.bbh.pycbcoffline --dax ${WORKFLOW_NAME}.dax --no-grid --cache-file ../input.map 
+
