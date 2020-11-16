@@ -1,6 +1,7 @@
 #!/usr/bin/python
 """
-Find number of injections in a given block above a certain IFAR threshold.
+Find number of injections of particular type in the CSV file
+ above a certain IFAR threshold.
 """
 import argparse, logging, pandas as pd
 
