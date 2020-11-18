@@ -12,7 +12,7 @@ if test x${LIGO_USERNAME} == "x" ; then
 fi
 
 WORKFLOW_NAME=o3
-IMBH_CONFIG_TAG='v1.0.2'
+IMBH_CONFIG_TAG='v1.0.3'
 CONFIG_TAG='v1.16.12.0'
 DATA_TYPE='C01'
 DATA_INI_NAME=data_O3_C01_clean.ini
