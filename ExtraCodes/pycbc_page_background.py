@@ -5,10 +5,12 @@ Make a table of background for background_overlap
 import argparse, h5py, numpy, pycbc.results, pycbc.detector, sys
 from pycbc.types import MultiDetOptionAction
 import pycbc.pnutils, pycbc.events
-import pycbc.version
+import pycbc.version, lal
 from itertools import combinations
 import pandas as pd
 
+def p_from_far(far, livetime):
+    return 1 - numpy.exp(-far * livetime)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--version", action="version", version=pycbc.version.git_verbose_msg)
@@ -25,6 +27,7 @@ detectors = f.attrs['ifos'].split(' ')
 keys = f['background_exc'].keys()
 detectors_used = []
 background = f['background_exc']
+foreground_livetime = f.attrs['foreground_time'] / lal.YRJUL_SI
 for det in detectors:
     if(det in keys):
         detectors_used.append(det)
@@ -37,9 +40,12 @@ for det in detectors:
         time_2 = numpy.array(background[det_two_combo[i,1]+'/time'][:])
         time_1_header = 't_' + det_two_combo[i,0]
         time_2_header = 't_' + det_two_combo[i,1]
+    cstat_rate = 1.0 / f['background_exc/ifar'][:]
+    cstat_fap = p_from_far(cstat_rate, foreground_livetime)
+
     ids = {detector:background[detector+'/trigger_id'][:] for detector in detectors_used}
-    background_cols = [background['stat'], background['ifar'], time_1, time_2]
-    background_names = ['Ranking Stat.', 'IFAR (yrs)', time_1_header, time_2_header]
+    background_cols = [background['stat'], background['ifar'], cstat_fap, time_1, time_2]
+    background_names = ['Ranking Stat.', 'IFAR (yrs)', 'FAP', time_1_header, time_2_header]
     
 if args.single_trigger_files:
     for ifo in args.single_trigger_files:
