@@ -9,7 +9,7 @@ logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
 parser = argparse.ArgumentParser(description='Returns the number of injections abover an IFAR threshold')
 parser.add_argument('--input-file', 
-                    help='HDF File containing the matched injections')
+                    help='CSV File containing the matched injections')
 parser.add_argument('--mtotal', 
                     help='Source frame total mass of the system', 
                     type=float, default=800.)
@@ -51,6 +51,10 @@ rslt_df = rslt_df[rslt_df.chip <= (chi_p + 0.1)]
 
 rslt_df = rslt_df[rslt_df.chieff >= (chi_eff - 0.1)]
 rslt_df = rslt_df[rslt_df.chieff <= (chi_eff + 0.1)]
+
+logging.info('Writing to file {}'.format(output_file))
+rslt_df.to_csv(output_file)
+rslt_df.dropna()
 rslt_df = rslt_df[rslt_df['Exc. IFAR'] >= ifar]
 
 logging.info("Number of injections with IFAR. greater than {} in this file: {}".format(ifar, len(rslt_df)))
