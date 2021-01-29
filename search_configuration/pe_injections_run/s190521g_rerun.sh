@@ -12,7 +12,7 @@ if test x${LIGO_USERNAME} == "x" ; then
 fi
 
 WORKFLOW_NAME=o3
-IMBH_CONFIG_TAG='v1.0.3'
+IMBH_CONFIG_TAG='v1.0.4'
 CONFIG_TAG='v1.16.12.2'
 DATA_TYPE='C01'
 DATA_INI_NAME=data_O3_C01_clean.ini
@@ -20,7 +20,7 @@ DESCRIPTION='S190521g_rate_inj'
 
 GITLAB_URL_FULL_HL="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3C00/pipelineHL"
 GITLAB_URL_FULL_HLV="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3C00/pipelineHLV"
-GITLAB_URL_IMBHB_HLV="/home/koustav.chandra/O3/S190521g/rate_inj"
+GITLAB_URL_IMBHB_HLV="https://git.ligo.org/koustav.chandra/focussed-imbhb-search/-/raw/${IMBH_CONFIG_TAG}/search_configuration/pe_injections_run/"
 GITLAB_URL_DATA_HLV="https://git.ligo.org/ligo-cbc/pycbc-config/raw/${CONFIG_TAG}/O3${DATA_TYPE}/pipelineHLV"
 GITLAB_URL_BBH="https://git.ligo.org/ligo-cbc/pycbc-config/-/raw/master/O3C01/targetedBBHpipelineHLV/"
 
@@ -36,10 +36,10 @@ ecp-cookie-init LIGO.ORG https://git.ligo.org/users/auth/shibboleth/callback $LI
 pycbc_create_offline_search_workflow \
   --workflow-name ${WORKFLOW_NAME} --output-dir a${CHUNKNUMBER}_${DESCRIPTION} \
   --config-files \
-  ${GITLAB_URL_IMBHB_HLV}/analysis.ini \
+  ${GITLAB_URL_IMBHB_HLV}/analysis_s190521g.ini \
   ${GITLAB_URL_FULL_HLV}/executables.ini \
   ${GITLAB_URL_IMBHB_HLV}/s190521ginj.ini \
-  ${GITLAB_URL_IMBHB_HLV}/plotting_modified.ini \
+  ${GITLAB_URL_IMBHB_HLV}/plotting_s190521g.ini \
   ${GITLAB_URL_DATA_HLV}/${DATA_INI_NAME} \
   ${GITLAB_URL_FULL_HL}/gating.ini \
   ${GITLAB_URL_BBH}/gps_times_chunk${CHUNKNUMBER}.ini \
