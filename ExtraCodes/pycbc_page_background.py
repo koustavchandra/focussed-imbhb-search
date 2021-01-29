@@ -10,6 +10,7 @@ from itertools import combinations
 import pandas as pd
 
 def p_from_far(far, livetime):
+#    print(livetime)
     return 1 - numpy.exp(-far * livetime)
 
 parser = argparse.ArgumentParser()
@@ -28,6 +29,8 @@ keys = f['background_exc'].keys()
 detectors_used = []
 background = f['background_exc']
 foreground_livetime = f.attrs['foreground_time'] / lal.YRJUL_SI
+print("Background time {}".format(f.attrs['background_time_exc']/ lal.YRJUL_SI))
+print("Foreground time {}".format(foreground_livetime))
 for det in detectors:
     if(det in keys):
         detectors_used.append(det)
@@ -44,8 +47,8 @@ for det in detectors:
     cstat_fap = p_from_far(cstat_rate, foreground_livetime)
 
     ids = {detector:background[detector+'/trigger_id'][:] for detector in detectors_used}
-    background_cols = [background['stat'], background['ifar'], cstat_fap, time_1, time_2]
-    background_names = ['Ranking Stat.', 'IFAR (yrs)', 'FAP', time_1_header, time_2_header]
+    background_cols = [background['stat'], background['ifar'], cstat_fap, background['decimation_factor'], time_1, time_2]
+    background_names = ['Ranking Stat.', 'IFAR (yrs)', 'FAP', 'Decimation Factor',time_1_header, time_2_header]
     
 if args.single_trigger_files:
     for ifo in args.single_trigger_files:
