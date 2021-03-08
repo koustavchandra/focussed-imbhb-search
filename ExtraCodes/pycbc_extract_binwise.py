@@ -43,17 +43,17 @@ logging.info("Injections parameters requested: Total-Mass {}, chip {}, chieff {}
 logging.info("Reading CSV File...")
 df = pd.read_csv(input_file)
 
-rslt_df = df[df.source_mass > (total_mass - 1)]
-rslt_df = rslt_df[rslt_df.source_mass < (total_mass + 1)]
+rslt_df = df[df.source_mass > (total_mass - 5.)]
+rslt_df = rslt_df[rslt_df.source_mass < (total_mass + 5.)]
 
-rslt_df = rslt_df[rslt_df.q >= (mratio - 0.1)]
-rslt_df = rslt_df[rslt_df.q <= (mratio + 0.1)]
+rslt_df = rslt_df[rslt_df.q >= (mratio - 0.3)]
+rslt_df = rslt_df[rslt_df.q <= (mratio + 0.3)]
 
-rslt_df = rslt_df[rslt_df.chip >= (chi_p - 0.1)]
-rslt_df = rslt_df[rslt_df.chip <= (chi_p + 0.1)]
+rslt_df = rslt_df[rslt_df.chip >= (chi_p - 0.2)]
+rslt_df = rslt_df[rslt_df.chip <= (chi_p + 0.2)]
 
-rslt_df = rslt_df[rslt_df.chieff >= (chi_eff - 0.1)]
-rslt_df = rslt_df[rslt_df.chieff <= (chi_eff + 0.1)]
+rslt_df = rslt_df[rslt_df.chieff >= (chi_eff - 0.2)]
+rslt_df = rslt_df[rslt_df.chieff <= (chi_eff + 0.2)]
 rslt_df['massbin'] = massbin 
 
 logging.info('Writing to file {}'.format(output_file))
