@@ -58,14 +58,13 @@ df2['chi_p'] = numpy.round(pycbc.conversions.chi_p(spin1x=df1['spin1x'],
                                                    spin2y=df1['spin2y'],
                                                    mass1=df1['mass0'],
                                                    mass2=df1['mass1'],), 2)
-df2['z'] = _redshift(distance=df1['distance'])
+
 df2['mtotal'] = pycbc.conversions.mtotal_from_mass1_mass2(df1['mass0'],
                                                           df1['mass1'])
 
 df2['q'] = numpy.round(pycbc.conversions.q_from_mass1_mass2(df1['mass0'],
                                                             df1['mass1']),2)
 
-df2['source_mass'] = numpy.round(df2.mtotal / (1 + df2.z), 2)
 logging.info('Writing to file {}'.format(output_file))
 df2.to_csv(output_file,
            index=False)
