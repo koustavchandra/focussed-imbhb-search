@@ -46,9 +46,11 @@ print('MassBin Number ',df_cwb['massbin'][0])
 df_cwb['cWB FAP'] = df_cwb['cWB FAP'].where(df_cwb['cWB FAP']!=0., numpy.nan) 
 
 # Reading two columns of the CSV Files and rounding Inj Time to nearest sec
-df_pycbc = pd.read_csv(pycbc_bin_file, usecols=['Inj Time', 'Exc. FAP'])
+df_pycbc = pd.read_csv(pycbc_bin_file, usecols=['Inj Time', 'Exc. IFAR'])
 df_pycbc = df_pycbc.round({'Inj Time': 0})
-df_pycbc = df_pycbc.rename(columns={'Exc. FAP': 'PyCBC FAP'})
+# Recalculating PyCBC FAP with combined analysis time. The same is done for candidate events
+analysis_time_pycbc = 0.74663
+df_pycbc['PyCBC FAP'] = 1-numpy.exp(-analysis_time_pycbc/df_pycbc['Exc. IFAR'])
 
 
 # Reading two columns of the CSV Files and rounding Inj Time to nearest sec
