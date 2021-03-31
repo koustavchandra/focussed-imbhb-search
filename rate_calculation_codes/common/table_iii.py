@@ -8,8 +8,6 @@ Original file is located at
 """
 
 import pandas as pd, os
-from google.colab import drive
-drive.mount('/content/drive',force_remount=True)
 import pylab, numpy
 import seaborn as sns
 sns.set_context('talk') 
@@ -26,7 +24,7 @@ pylab.rcParams.update(
 
 pylab.rcParams['axes.linewidth'] = 1
 
-file = '/content/drive/MyDrive/combined_pipelines.csv'
+file = 'combined_pipelines.csv'
 df = pd.read_csv(file)
 
 df['cWB_VT_sen'] = df['cWB_N_rec']/df['N_tot']*df['VT_tot']
@@ -55,4 +53,3 @@ headers = ['M_tot', 'q', 'chieff', 'chip', 'SIM_ID', 'z', 'VT_sen', 'R']
 print(df2.to_latex(index=False, 
                    columns=headers,
                    formatters={'q':f2}))
-
