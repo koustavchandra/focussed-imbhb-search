@@ -7,22 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1n24Qgvh62YT0NN3eZaeal7PXSjDtlorZ
 """
 
-import pandas as pd, os
-import pylab, numpy
-import seaborn as sns
-sns.set_context('talk') 
-sns.set_palette('colorblind')
-sns.set_style('ticks')
-
-pylab.rcParams.update(
-    {
-        'text.usetex': False,
-        'font.family': 'stixgeneral',
-        'mathtext.fontset': 'stix',
-    }
-)
-
-pylab.rcParams['axes.linewidth'] = 1
+import numpy, pandas as pd
 
 file = 'combined_pipelines.csv'
 df = pd.read_csv(file)
