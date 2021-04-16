@@ -34,7 +34,7 @@ for ifar in PyCBC_IFAR:
 # https://git.ligo.org/publications/O3/o3-cbc-burst-imbh/-/wikis/IMBH-candidate-events
 
 cWB_IFAR = [4903.45, 
-           17.77,
+           17.27,
            7.61]
 cWB_livetime = 0.7343
 
