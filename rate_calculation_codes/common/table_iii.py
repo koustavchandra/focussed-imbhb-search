@@ -34,3 +34,5 @@ headers = ['M_tot', 'q', 'chieff', 'chip', 'SIM_ID', 'z', 'VT_sen', 'R']
 print(df2.to_latex(index=False, 
                    columns=headers,
                    formatters={'q':f2}))
+
+print(df2[headers].to_markdown(index=False))
