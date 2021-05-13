@@ -82,9 +82,13 @@ merge1 = chosen.merge(df_pycbc, on='Inj Time', how='outer')
 
 logging.info('Reading GstLAL File and merging with Input File {}'.format(gstlal_file))
 df_gstlal = pd.read_csv(gstlal_file, 'r', delimiter=' ',header=None,names=['tc', 'gstlal_fap'])
-df_gstlal['Inj Time'] = df_gstlal['tc'].round(0)
-df_gstlal.drop('tc', axis=1, inplace=True)
-merge2 = merge1.merge(df_gstlal, on = 'Inj Time', how='outer')
+merge2 = merge1
+merge2['interval'] = numpy.nan
+merge2['gstlal_fap'] = numpy.ones(merge2.shape[0])
+for i in range(len(df_gstlal['tc'])):
+    merge2['interval'] = merge2['tc'] - df_gstlal['tc'][i]
+    index = merge2[numpy.abs(merge2['interval']) < 1].index
+    merge2['gstlal_fap'][index] = df_gstlal['gstlal_fap'][i]
 
 logging.info('Reading cWB File and merging with Input File {}'.format(cwb_file))
 df_cwb = pd.read_csv(cwb_file, usecols=['Inj Time', 'cWB FAP'])
