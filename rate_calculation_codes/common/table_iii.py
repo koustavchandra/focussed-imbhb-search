@@ -1,6 +1,6 @@
 import numpy, pandas as pd
 
-file = 'combined_pipelines.csv'
+file = '/content/drive/MyDrive/o3.csv'
 df = pd.read_csv(file)
 
 def nsf(num):
@@ -32,4 +32,4 @@ headers = ['mtotal', 'q', 'chi_eff', 'chi_p', 'sim_id', 'max_redshift', 'VT_sen'
 df2 = df.round(2)
 print(df2.to_latex(index=False, 
                    columns=headers,
-                   formatters={'mtotal': f3, 'chi_eff' : f4, 'chi_p' : f4, 'q':f2, 'VT_sen' : nsf, 'R':nsf}))
+                   formatters={'mtotal': f3, 'chi_eff' : f4, 'chi_p' : f4, 'q':f2, 'max_redshift' : nsf, 'VT_sen' : nsf, 'R':nsf}))
